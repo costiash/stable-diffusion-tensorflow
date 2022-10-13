@@ -68,7 +68,7 @@ class StableDiffusion:
                 input_image = input_image.resize((self.img_width, self.img_height))
 
             elif type(input_image) is np.ndarray:
-                input_image = np.resize(input_image, (self.img_width, self.img_height, input_image.shape[2]))
+                input_image = np.resize(input_image, (self.img_height, self.img_width, input_image.shape[2]))
                 
             input_image_array = np.array(input_image, dtype=np.float32)[None,...,:3]
             input_image_tensor = tf.cast((input_image_array / 255.0) * 2 - 1, self.dtype)
