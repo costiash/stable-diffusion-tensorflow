@@ -200,7 +200,7 @@ class StableDiffusion:
 
     def load_weights_from_pytorch_ckpt(self , pytorch_ckpt_path):
         import torch
-        pt_weights = torch.load(pytorch_ckpt_path)
+        pt_weights = torch.load(pytorch_ckpt_path, map_location="cpu")
         for module_name in ['text_encoder', 'diffusion_model', 'decoder', 'encoder' ]:
             module_weights = []
             for i , (key , perm ) in enumerate(PYTORCH_CKPT_MAPPING[module_name]):
